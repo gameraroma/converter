@@ -15,6 +15,7 @@
 		914A4A8821A2EDAC00446093 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914A4A8621A2EDAC00446093 /* LaunchScreen.storyboard */; };
 		914A4A9221A2F6EF00446093 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914A4A9121A2F6EF00446093 /* Menu.swift */; };
 		9150D7E121A2FEE3000CEFDA /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9150D7E021A2FEE3000CEFDA /* MenuCollectionViewCell.swift */; };
+		9150D7E321A30859000CEFDA /* ConvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9150D7E221A30859000CEFDA /* ConvertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		914A4A8921A2EDAC00446093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		914A4A9121A2F6EF00446093 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		9150D7E021A2FEE3000CEFDA /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		9150D7E221A30859000CEFDA /* ConvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				914A4A8921A2EDAC00446093 /* Info.plist */,
 				914A4A8121A2EDAA00446093 /* converter.xcdatamodeld */,
 				914A4A9121A2F6EF00446093 /* Menu.swift */,
+				9150D7E221A30859000CEFDA /* ConvertViewController.swift */,
 			);
 			path = converter;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				914A4A7D21A2EDAA00446093 /* MainViewController.swift in Sources */,
 				914A4A7B21A2EDAA00446093 /* AppDelegate.swift in Sources */,
+				9150D7E321A30859000CEFDA /* ConvertViewController.swift in Sources */,
 				914A4A8321A2EDAA00446093 /* converter.xcdatamodeld in Sources */,
 				914A4A9221A2F6EF00446093 /* Menu.swift in Sources */,
 				9150D7E121A2FEE3000CEFDA /* MenuCollectionViewCell.swift in Sources */,
