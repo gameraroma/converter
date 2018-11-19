@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="30" minY="30" maxX="30" maxY="30"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MaP-8j-he3" customClass="MenuCollectionViewCell" customModule="converter" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MenuCollectionViewCell" reuseIdentifier="MenuCollectionViewCell" id="MaP-8j-he3" customClass="MenuCollectionViewCell" customModule="converter" customModuleProvider="target">
                                         <rect key="frame" x="30" y="30" width="125" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -58,6 +58,10 @@
                                             <constraint firstItem="uyc-W3-Bkq" firstAttribute="top" secondItem="HsC-G9-Gvm" secondAttribute="bottom" constant="2" id="oOF-bT-qVQ"/>
                                             <constraint firstAttribute="bottom" secondItem="uyc-W3-Bkq" secondAttribute="bottom" constant="2" id="vsA-cm-lhi"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="HsC-G9-Gvm" id="aKE-mH-Mf0"/>
+                                            <outlet property="nameLabel" destination="uyc-W3-Bkq" id="Lj6-dV-yfc"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -77,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="135" y="133.09859154929578"/>
         </scene>
     </scenes>
 </document>

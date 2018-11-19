@@ -9,5 +9,7 @@
 import UIKit
 
 class MenuCollectionViewCell: UICollectionViewCell {
-    
+    //MARK: Properties
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
 }
