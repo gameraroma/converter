@@ -15,7 +15,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menus += [Menu(name: "Length", icon: nil), Menu(name: "Temperature", icon: nil), Menu(name: "Mass", icon: nil)]
+        menus += [Menu(name: "Length", icon: UIImage(named: "length")), Menu(name: "Temperature", icon: nil), Menu(name: "Mass", icon: nil)]
         menuCollectionView.dataSource = self
     }
 
