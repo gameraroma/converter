@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		914A4A7B21A2EDAA00446093 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914A4A7A21A2EDAA00446093 /* AppDelegate.swift */; };
-		914A4A7D21A2EDAA00446093 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914A4A7C21A2EDAA00446093 /* ViewController.swift */; };
+		914A4A7D21A2EDAA00446093 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914A4A7C21A2EDAA00446093 /* MainViewController.swift */; };
 		914A4A8021A2EDAA00446093 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914A4A7E21A2EDAA00446093 /* Main.storyboard */; };
 		914A4A8321A2EDAA00446093 /* converter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 914A4A8121A2EDAA00446093 /* converter.xcdatamodeld */; };
 		914A4A8521A2EDAC00446093 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 914A4A8421A2EDAC00446093 /* Assets.xcassets */; };
 		914A4A8821A2EDAC00446093 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914A4A8621A2EDAC00446093 /* LaunchScreen.storyboard */; };
+		914A4A9021A2F1EF00446093 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914A4A8F21A2F1EF00446093 /* MenuCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		914A4A7721A2EDAA00446093 /* converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = converter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		914A4A7A21A2EDAA00446093 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		914A4A7C21A2EDAA00446093 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		914A4A7C21A2EDAA00446093 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		914A4A7F21A2EDAA00446093 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		914A4A8221A2EDAA00446093 /* converter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = converter.xcdatamodel; sourceTree = "<group>"; };
 		914A4A8421A2EDAC00446093 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		914A4A8721A2EDAC00446093 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		914A4A8921A2EDAC00446093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		914A4A8F21A2F1EF00446093 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +59,13 @@
 			isa = PBXGroup;
 			children = (
 				914A4A7A21A2EDAA00446093 /* AppDelegate.swift */,
-				914A4A7C21A2EDAA00446093 /* ViewController.swift */,
+				914A4A7C21A2EDAA00446093 /* MainViewController.swift */,
 				914A4A7E21A2EDAA00446093 /* Main.storyboard */,
 				914A4A8421A2EDAC00446093 /* Assets.xcassets */,
 				914A4A8621A2EDAC00446093 /* LaunchScreen.storyboard */,
 				914A4A8921A2EDAC00446093 /* Info.plist */,
 				914A4A8121A2EDAA00446093 /* converter.xcdatamodeld */,
+				914A4A8F21A2F1EF00446093 /* MenuCollectionViewCell.swift */,
 			);
 			path = converter;
 			sourceTree = "<group>";
@@ -138,9 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				914A4A7D21A2EDAA00446093 /* ViewController.swift in Sources */,
+				914A4A7D21A2EDAA00446093 /* MainViewController.swift in Sources */,
 				914A4A7B21A2EDAA00446093 /* AppDelegate.swift in Sources */,
 				914A4A8321A2EDAA00446093 /* converter.xcdatamodeld in Sources */,
+				914A4A9021A2F1EF00446093 /* MenuCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
