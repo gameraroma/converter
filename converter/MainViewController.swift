@@ -30,10 +30,23 @@ class MainViewController: UIViewController, UICollectionViewDataSource {
             fatalError("The dequeued cell is not an instance of MenuCollectionViewCell.")
         }
         
+        cell.layer.masksToBounds = true
+        cell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.borderWidth = 2
+        cell.layer.cornerRadius = 20
+        
         let menu = menus[indexPath.row]
         cell.nameLabel.text = menu.name
         cell.iconImageView.image = menu.icon
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToConvertView" {
+            let cell = sender as! MenuCollectionViewCell
+            let vc = segue.destination as! ConvertViewController
+            vc.barTitle = cell.nameLabel.text
+        }
     }
 }
 

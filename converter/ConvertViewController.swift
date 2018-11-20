@@ -9,15 +9,11 @@
 import UIKit
 
 class ConvertViewController: UIViewController {
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var navigationItems: UINavigationItem!
+    public var barTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationBar?.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationBar?.shadowImage = UIImage()
-        navigationItems.title = ""
+        navigationItem.title = barTitle!
     }
     
     @IBAction func backAction(_ sender: Any) {
