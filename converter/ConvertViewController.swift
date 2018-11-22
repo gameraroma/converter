@@ -16,7 +16,7 @@ class ConvertViewController: UIViewController {
     @IBOutlet weak var toUnitButton: UIButton!
     @IBOutlet weak var copyResultButton: UIButton!
     @IBOutlet weak var fromInputTextField: UITextField!
-    @IBOutlet weak var resultOutputTextView: UITextView!
+    @IBOutlet weak var resultOutputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,11 @@ class ConvertViewController: UIViewController {
     }
     
     @IBAction func copyResultAction(_ sender: Any) {
+    }
+    
+    @IBAction func inputFieldEditingChanged(_ sender: Any) {
+        let field = sender as! UITextField
+        resultOutputLabel.text = field.text
     }
     
     @IBAction func backAction(_ sender: Any) {
