@@ -57,7 +57,7 @@ class SelectUnitViewController: UIViewController, UITableViewDataSource, UITable
     //TODO change editing style
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedUnit = unitList[indexPath.row]
-        tableView.cellForRow(at: indexPath)!.setSelected(true, animated: true)
+        super.performSegue(withIdentifier: "unitSelected", sender: self)
     }
     
     /*

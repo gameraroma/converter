@@ -9,8 +9,8 @@
 import UIKit
 
 class ConvertViewController: UIViewController {
-    var toUnit: Unit?
     var fromUnit: Unit?
+    var toUnit: Unit?
     
     public var measureName: String?
     
@@ -35,9 +35,28 @@ class ConvertViewController: UIViewController {
     }
     
     @IBAction func switchButtonAction(_ sender: Any) {
-        UIView.animate(withDuration: 0.5, animations: {
+        let tempUnit = fromUnit
+        fromUnit = toUnit
+        toUnit = tempUnit
+        
+        UIView.animate(withDuration: 0.25, animations: {
             self.switchButton.transform = self.switchButton.transform.rotated(by: CGFloat.pi)
+            
+            self.fromUnitButton.setTitle(self.fromUnit?.abbvName, for: .normal)
+            self.toUnitButton.setTitle(self.toUnit?.abbvName, for: .normal)
         })
+        
+        UIView.transition(with: self.fromUnitButton,
+                          duration:0.25,
+                          options: .curveEaseIn,
+                          animations: { self.fromUnitButton.alpha = 1.0 },
+                          completion: nil)
+
+        UIView.transition(with: self.toUnitButton,
+                          duration:0.5,
+                          options: .curveEaseIn,
+                          animations: { self.toUnitButton.alpha = 1.0 },
+                          completion: nil)
     }
     
     @IBAction func copyResultAction(_ sender: Any) {
@@ -51,12 +70,24 @@ class ConvertViewController: UIViewController {
     
     @IBAction func unwindToConvertView(sender: UIStoryboardSegue) {
         let vc = sender.source as! SelectUnitViewController
-        toUnit = vc.selectedUnit
+        switch vc.barTitle {
+            case "From Unit":
+                fromUnit = vc.selectedUnit
+                fromUnitButton.setTitle(fromUnit?.abbvName, for: .normal)
+                break
+            case "To Unit":
+                toUnit = vc.selectedUnit
+                toUnitButton.setTitle(toUnit?.abbvName, for: .normal)
+                break
+            default:
+                break
+        }
     }
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         let vc = segue.destination as! SelectUnitViewController
         vc.measureName = measureName!
         switch segue.identifier {

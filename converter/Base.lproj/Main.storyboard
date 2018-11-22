@@ -261,7 +261,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="DTD-MB-omK" kind="unwind" unwindAction="unwindToConvertViewWithSender:" id="OVl-AM-yVj"/>
+                                            <segue destination="DTD-MB-omK" kind="unwind" identifier="unitSelected" unwindAction="unwindToConvertViewWithSender:" id="OVl-AM-yVj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
