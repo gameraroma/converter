@@ -15,7 +15,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menus += [Menu(name: "Length", icon: UIImage(named: "length")), Menu(name: "Temperature", icon: nil), Menu(name: "Mass", icon: nil)]
+        menus = AppData.menuItemsList
+
         menuCollectionView.dataSource = self
     }
 
@@ -45,7 +46,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource {
         if segue.identifier == "ToConvertView" {
             let cell = sender as! MenuCollectionViewCell
             let vc = segue.destination as! ConvertViewController
-            vc.barTitle = cell.nameLabel.text
+            vc.measureName = cell.nameLabel.text
         }
     }
 }

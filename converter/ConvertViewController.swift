@@ -9,7 +9,10 @@
 import UIKit
 
 class ConvertViewController: UIViewController {
-    public var barTitle: String?
+    var toUnit: Unit?
+    var fromUnit: Unit?
+    
+    public var measureName: String?
     
     @IBOutlet weak var switchButton: UIButton!
     @IBOutlet weak var fromUnitButton: UIButton!
@@ -20,7 +23,15 @@ class ConvertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = barTitle!
+        navigationItem.title = measureName!
+        
+        if measureName == "Length" {
+            fromUnit = AppData.lengthUnitsList[0]
+            toUnit = AppData.lengthUnitsList[1]
+            
+            fromUnitButton.setTitle(fromUnit?.abbvName, for: .normal)
+            toUnitButton.setTitle(toUnit?.abbvName, for: .normal)
+        }
     }
     
     @IBAction func switchButtonAction(_ sender: Any) {
@@ -37,20 +48,25 @@ class ConvertViewController: UIViewController {
         resultOutputLabel.text = field.text
     }
     
-    @IBAction func backAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    
+    @IBAction func unwindToConvertView(sender: UIStoryboardSegue) {
+        let vc = sender.source as! SelectUnitViewController
+        toUnit = vc.selectedUnit
     }
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! SelectUnitViewController
+        vc.measureName = measureName!
         switch segue.identifier {
         case "FromUnit":
             vc.barTitle = "From Unit"
+            vc.selectedUnit = fromUnit
             break
         case "ToUnit":
             vc.barTitle = "To Unit"
+            vc.selectedUnit = toUnit
             break
         default:
             return
