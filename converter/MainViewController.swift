@@ -36,10 +36,11 @@ class MainViewController: UIViewController, UICollectionViewDataSource {
         cell.layer.borderWidth = 2
         cell.layer.cornerRadius = 20
         
-        let unitType = menus[indexPath.row]
-        let typeString = NSStringFromClass(type(of: unitType)).replacingOccurrences(of: "NSUnit", with: "")
+        let unitDimensionType = menus[indexPath.row]
+        let typeString = NSStringFromClass(type(of: unitDimensionType)).replacingOccurrences(of: "NSUnit", with: "")
         cell.nameLabel.text = typeString
-        cell.unitDimensionType = unitType
+        cell.unitDimensionType = unitDimensionType
+        cell.iconImageView.image = UIImage.init(named: typeString.lowercased())
         return cell
     }
     

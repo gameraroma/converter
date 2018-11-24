@@ -43,7 +43,7 @@ class SelectUnitViewController: UIViewController, UITableViewDataSource, UITable
         
         let formatter = MeasurementFormatter()
         formatter.unitStyle = .long
-        let unit = formatter.string(from: unitList[indexPath.row])
+        let unit = formatter.string(from: unitList[indexPath.row]) + " (\(unitList[indexPath.row].symbol))"
         
         cell.textLabel?.text = unit
         cell.selectionStyle = .blue

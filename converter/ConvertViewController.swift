@@ -30,13 +30,29 @@ class ConvertViewController: UIViewController {
         case is UnitLength:
             unitList = AppData.lengthUnitsList
             break
+        case is UnitTemperature:
+            unitList = AppData.temperatureUnitsList
+            break
+        case is UnitMass:
+            unitList = AppData.massUnitsList
+            break
+        case is UnitArea:
+            unitList = AppData.areaUnitsList
+            break
+        case is UnitVolume:
+            unitList = AppData.volumeUnitsList
+            break
+        case is UnitAngle:
+            unitList = AppData.angleUnitsList
+            break
         default:
+            // negligible
             unitList = AppData.lengthUnitsList
             break
         }
         
-        fromUnit = AppData.lengthUnitsList[0]
-        toUnit = AppData.lengthUnitsList[1]
+        fromUnit = unitList[0]
+        toUnit = unitList[1]
         
         fromUnitButton.setTitle(fromUnit?.symbol, for: .normal)
         toUnitButton.setTitle(toUnit?.symbol, for: .normal)
@@ -47,20 +63,7 @@ class ConvertViewController: UIViewController {
     }
     
     @IBAction func switchButtonAction(_ sender: Any) {
-        let tempUnit = fromUnit
-        fromUnit = toUnit
-        toUnit = tempUnit
-        
-        resultOutputLabel.alpha = 0.0;
-        UIView.animate(withDuration: 0.25, animations: {
-            self.switchButton.transform = self.switchButton.transform.rotated(by: CGFloat.pi)
-            
-            self.fromUnitButton.setTitle(self.fromUnit?.symbol, for: .normal)
-            self.toUnitButton.setTitle(self.toUnit?.symbol, for: .normal)
-            
-            self.resultOutputLabel.alpha = 1.0
-        })
-        
+        switchUnitConversion()
         doConversion()
     }
     
@@ -79,14 +82,25 @@ class ConvertViewController: UIViewController {
 
     @IBAction func unwindToConvertView(sender: UIStoryboardSegue) {
         let vc = sender.source as! SelectUnitViewController
+        let selectedUnit = vc.selectedUnit
         switch vc.barTitle {
             case "From Unit":
-                fromUnit = vc.selectedUnit
-                fromUnitButton.setTitle(fromUnit?.symbol, for: .normal)
+                if selectedUnit == toUnit {
+                    switchUnitConversion()
+                }
+                else {
+                    fromUnit = vc.selectedUnit
+                    fromUnitButton.setTitle(fromUnit?.symbol, for: .normal)
+                }
                 break
             case "To Unit":
-                toUnit = vc.selectedUnit
-                toUnitButton.setTitle(toUnit?.symbol, for: .normal)
+                if selectedUnit == fromUnit {
+                    switchUnitConversion()
+                }
+                else {
+                    toUnit = vc.selectedUnit
+                    toUnitButton.setTitle(toUnit?.symbol, for: .normal)
+                }
                 break
             default:
                 break
@@ -112,6 +126,22 @@ class ConvertViewController: UIViewController {
         }
     }
     
+    private func switchUnitConversion() {
+        let tempUnit = fromUnit
+        fromUnit = toUnit
+        toUnit = tempUnit
+        
+        resultOutputLabel.alpha = 0.0;
+        UIView.animate(withDuration: 0.25, animations: {
+            self.switchButton.transform = self.switchButton.transform.rotated(by: CGFloat.pi)
+            
+            self.fromUnitButton.setTitle(self.fromUnit?.symbol, for: .normal)
+            self.toUnitButton.setTitle(self.toUnit?.symbol, for: .normal)
+            
+            self.resultOutputLabel.alpha = 1.0
+        })
+    }
+    
     private func doConversion() {
         var text : String = fromInputTextField.text!
         // prevent empty text field
@@ -127,7 +157,6 @@ class ConvertViewController: UIViewController {
         // output text must be decimal or integer
         let textDouble = Double(text)
         if textDouble != nil {
-            // TODO change
             let measurement = Measurement(value: textDouble ?? 0, unit: fromUnit! as! Dimension)
             let convertedMeasurement = measurement.converted(to: toUnit as! Dimension)
             resultOutputLabel.text = "\(convertedMeasurement.value)"
