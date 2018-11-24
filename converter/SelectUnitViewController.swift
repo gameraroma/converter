@@ -29,6 +29,8 @@ class SelectUnitViewController: UIViewController, UITableViewDataSource, UITable
             unitList = AppData.lengthUnitsList
         }
         
+        unitsListTableView.tableFooterView = UIView()
+        
         unitsListTableView.dataSource = self
         unitsListTableView.delegate = self
     }

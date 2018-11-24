@@ -120,23 +120,23 @@
                                     <action selector="switchButtonAction:" destination="yiv-bg-476" eventType="touchUpInside" id="ZPn-vQ-Lv3"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Pq-p8-VwO">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Pq-p8-VwO">
                                 <rect key="frame" x="16" y="124" width="288" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="Uby-7A-ii6"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <connections>
                                     <action selector="inputFieldEditingChanged:" destination="yiv-bg-476" eventType="editingChanged" id="H0F-2F-E2N"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="toUnitButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pko-yt-70b">
-                                <rect key="frame" x="186" y="86" width="118" height="22"/>
+                                <rect key="frame" x="186" y="80" width="118" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Button" image="DropDown"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="nF8-T4-R7R" kind="presentation" identifier="ToUnit" id="BLR-cL-qLl"/>
                                 </connections>
@@ -166,16 +166,16 @@
                                     <action selector="copyResultAction:" destination="yiv-bg-476" eventType="touchUpInside" id="4qf-YX-rSN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="fromUnitButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LD1-v2-1uf">
-                                <rect key="frame" x="16" y="86" width="118" height="22"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" restorationIdentifier="fromUnitButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LD1-v2-1uf">
+                                <rect key="frame" x="16" y="80" width="118" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Button" image="DropDown"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="nF8-T4-R7R" kind="presentation" identifier="FromUnit" id="tbg-rn-aO2"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00000000000000000000000000000000000000000000000000" textAlignment="right" lineBreakMode="clip" numberOfLines="3" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ADQ-AK-jIY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" numberOfLines="3" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ADQ-AK-jIY">
                                 <rect key="frame" x="16" y="187" width="288" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="mr2-9I-0rq"/>
@@ -293,7 +293,6 @@
     </scenes>
     <resources>
         <image name="Copy" width="36" height="36"/>
-        <image name="DropDown" width="19.5" height="19.5"/>
         <image name="Switch" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>

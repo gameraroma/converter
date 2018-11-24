@@ -34,6 +34,10 @@ class ConvertViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fromInputTextField.becomeFirstResponder()
+    }
+    
     @IBAction func switchButtonAction(_ sender: Any) {
         let tempUnit = fromUnit
         fromUnit = toUnit
@@ -45,29 +49,39 @@ class ConvertViewController: UIViewController {
             self.fromUnitButton.setTitle(self.fromUnit?.abbvName, for: .normal)
             self.toUnitButton.setTitle(self.toUnit?.abbvName, for: .normal)
         })
-        
-        UIView.transition(with: self.fromUnitButton,
-                          duration:0.25,
-                          options: .curveEaseIn,
-                          animations: { self.fromUnitButton.alpha = 1.0 },
-                          completion: nil)
-
-        UIView.transition(with: self.toUnitButton,
-                          duration:0.5,
-                          options: .curveEaseIn,
-                          animations: { self.toUnitButton.alpha = 1.0 },
-                          completion: nil)
     }
     
     @IBAction func copyResultAction(_ sender: Any) {
+        UIPasteboard.general.string = resultOutputLabel.text
+        
+        resultOutputLabel.alpha = 0.0;
+        UIView.animate(withDuration: 0.25, //Time duration you want,
+            delay: 0.0,
+            options: .curveEaseIn,
+            animations: { self.resultOutputLabel.alpha = 1.0 },
+            completion: nil )
     }
     
     @IBAction func inputFieldEditingChanged(_ sender: Any) {
         let field = sender as! UITextField
-        resultOutputLabel.text = field.text
+        var text : String = field.text!
+        // prevent empty text field
+        if text == "" {
+            field.text = "0"
+            text = "0"
+        }
+        // eliminate zero at start
+        if text.first == "0" && text.count > 1 && !text.contains(".") {
+            text.remove(at: text.startIndex)
+            field.text = text
+        }
+        // output text must be decimal or integer
+        let textFloat = Float(text)
+        if textFloat != nil {
+            resultOutputLabel.text = "\(textFloat ?? 0)"
+        }
     }
-    
-    
+
     @IBAction func unwindToConvertView(sender: UIStoryboardSegue) {
         let vc = sender.source as! SelectUnitViewController
         switch vc.barTitle {
@@ -83,8 +97,6 @@ class ConvertViewController: UIViewController {
                 break
         }
     }
-    
-    // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
