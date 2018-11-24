@@ -12,8 +12,8 @@ class ConvertViewController: UIViewController {
     var fromUnit: Unit?
     var toUnit: Unit?
     
-    public var unitDimensionType: Dimension?
-    public var unitList = [Dimension]()
+    var unitDimensionType: Dimension?
+    var unitList = [Dimension]()
     
     @IBOutlet weak var switchButton: UIButton!
     @IBOutlet weak var fromUnitButton: UIButton!
