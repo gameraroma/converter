@@ -45,10 +45,15 @@ class SelectUnitViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = unitList[indexPath.row].name
+        
+        let formatter = MeasurementFormatter()
+        formatter.unitStyle = .long
+        let unit = formatter.string(from: unitList[indexPath.row])
+        
+        cell.textLabel?.text = unit
         cell.selectionStyle = .blue
         
-        if selectedUnit!.name == unitList[indexPath.row].name {
+        if selectedUnit == unitList[indexPath.row] {
             cell.setSelected(true, animated: true)
             cell.accessoryType = .checkmark
         }

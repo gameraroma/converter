@@ -133,8 +133,8 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="toUnitButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pko-yt-70b">
-                                <rect key="frame" x="186" y="80" width="118" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="186" y="76.5" width="118" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -167,8 +167,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" restorationIdentifier="fromUnitButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LD1-v2-1uf">
-                                <rect key="frame" x="16" y="80" width="118" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="16" y="76.5" width="118" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
                                 <connections>

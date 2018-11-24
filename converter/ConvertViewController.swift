@@ -26,11 +26,14 @@ class ConvertViewController: UIViewController {
         navigationItem.title = measureName!
         
         if measureName == "Length" {
-            fromUnit = AppData.lengthUnitsList[0]
-            toUnit = AppData.lengthUnitsList[1]
+//            fromUnit = AppData.lengthUnitsList[0]
+//            toUnit = AppData.lengthUnitsList[1]
             
-            fromUnitButton.setTitle(fromUnit?.abbvName, for: .normal)
-            toUnitButton.setTitle(toUnit?.abbvName, for: .normal)
+            fromUnit = UnitLength.meters
+            toUnit = UnitLength.centimeters
+            
+            fromUnitButton.setTitle(fromUnit?.symbol, for: .normal)
+            toUnitButton.setTitle(toUnit?.symbol, for: .normal)
         }
     }
     
@@ -43,43 +46,30 @@ class ConvertViewController: UIViewController {
         fromUnit = toUnit
         toUnit = tempUnit
         
+        resultOutputLabel.alpha = 0.0;
         UIView.animate(withDuration: 0.25, animations: {
             self.switchButton.transform = self.switchButton.transform.rotated(by: CGFloat.pi)
             
-            self.fromUnitButton.setTitle(self.fromUnit?.abbvName, for: .normal)
-            self.toUnitButton.setTitle(self.toUnit?.abbvName, for: .normal)
+            self.fromUnitButton.setTitle(self.fromUnit?.symbol, for: .normal)
+            self.toUnitButton.setTitle(self.toUnit?.symbol, for: .normal)
+            
+            self.resultOutputLabel.alpha = 1.0
         })
+        
+        doConversion()
     }
     
     @IBAction func copyResultAction(_ sender: Any) {
         UIPasteboard.general.string = resultOutputLabel.text
         
         resultOutputLabel.alpha = 0.0;
-        UIView.animate(withDuration: 0.25, //Time duration you want,
-            delay: 0.0,
-            options: .curveEaseIn,
-            animations: { self.resultOutputLabel.alpha = 1.0 },
-            completion: nil )
+        UIView.animate(withDuration: 0.25, animations: {
+            self.resultOutputLabel.alpha = 1.0
+        })
     }
     
     @IBAction func inputFieldEditingChanged(_ sender: Any) {
-        let field = sender as! UITextField
-        var text : String = field.text!
-        // prevent empty text field
-        if text == "" {
-            field.text = "0"
-            text = "0"
-        }
-        // eliminate zero at start
-        if text.first == "0" && text.count > 1 && !text.contains(".") {
-            text.remove(at: text.startIndex)
-            field.text = text
-        }
-        // output text must be decimal or integer
-        let textFloat = Float(text)
-        if textFloat != nil {
-            resultOutputLabel.text = "\(textFloat ?? 0)"
-        }
+        doConversion()
     }
 
     @IBAction func unwindToConvertView(sender: UIStoryboardSegue) {
@@ -87,15 +77,16 @@ class ConvertViewController: UIViewController {
         switch vc.barTitle {
             case "From Unit":
                 fromUnit = vc.selectedUnit
-                fromUnitButton.setTitle(fromUnit?.abbvName, for: .normal)
+                fromUnitButton.setTitle(fromUnit?.symbol, for: .normal)
                 break
             case "To Unit":
                 toUnit = vc.selectedUnit
-                toUnitButton.setTitle(toUnit?.abbvName, for: .normal)
+                toUnitButton.setTitle(toUnit?.symbol, for: .normal)
                 break
             default:
                 break
         }
+        doConversion()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -113,6 +104,28 @@ class ConvertViewController: UIViewController {
             break
         default:
             return
+        }
+    }
+    
+    private func doConversion() {
+        var text : String = fromInputTextField.text!
+        // prevent empty text field
+        if text == "" {
+            fromInputTextField.text = "0"
+            text = "0"
+        }
+        // eliminate zero at start
+        if text.first == "0" && text.count > 1 && !text.contains(".") {
+            text.remove(at: text.startIndex)
+            fromInputTextField.text = text
+        }
+        // output text must be decimal or integer
+        let textDouble = Double(text)
+        if textDouble != nil {
+            // TODO change
+            let measurement = Measurement(value: textDouble ?? 0, unit: fromUnit! as! Dimension)
+            let convertedMeasurement = measurement.converted(to: toUnit as! Dimension)
+            resultOutputLabel.text = "\(convertedMeasurement.value)"
         }
     }
 }

@@ -18,7 +18,7 @@ class AppData {
     
     public static var lengthUnitsList : [Unit] {
         get {
-            return [Unit(name: "Meter", abbvName: "m"), Unit(name: "Kilometer", abbvName: "km"), Unit(name: "Centimeter", abbvName: "cm")]
+            return [UnitLength.meters, UnitLength.kilometers, UnitLength.centimeters]
         }
     }
 }

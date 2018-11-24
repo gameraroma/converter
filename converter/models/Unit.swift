@@ -8,12 +8,12 @@
 
 import Foundation
 
-class Unit {
-    var name: String
-    var abbvName: String
-    
-    init(name: String, abbvName: String) {
-        self.name = name
-        self.abbvName = abbvName
-    }
-}
+//class Unit {
+//    var name: String
+//    var abbvName: String
+//    
+//    init(name: String, abbvName: String) {
+//        self.name = name
+//        self.abbvName = abbvName
+//    }
+//}
