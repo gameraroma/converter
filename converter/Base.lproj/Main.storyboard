@@ -184,16 +184,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5h-Bt-A23">
+                                <rect key="frame" x="16" y="271" width="30" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="±"/>
+                                <connections>
+                                    <action selector="revertSignButtonAction:" destination="yiv-bg-476" eventType="touchUpInside" id="DzI-6P-AYz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LD1-v2-1uf" firstAttribute="centerY" secondItem="aDe-6J-Nw4" secondAttribute="centerY" id="1ol-jx-QIz"/>
                             <constraint firstItem="f2E-2y-YSZ" firstAttribute="leading" secondItem="H5k-6c-5aR" secondAttribute="leading" id="6GI-jD-0Cl"/>
                             <constraint firstItem="ADQ-AK-jIY" firstAttribute="leading" secondItem="H5k-6c-5aR" secondAttribute="leading" constant="16" id="8ZT-Wt-LLc"/>
+                            <constraint firstItem="Y5h-Bt-A23" firstAttribute="centerY" secondItem="1mq-hP-EOZ" secondAttribute="centerY" id="Bbi-3a-KaN"/>
                             <constraint firstItem="H5k-6c-5aR" firstAttribute="trailing" secondItem="pko-yt-70b" secondAttribute="trailing" constant="16" id="CNp-dL-wfW"/>
                             <constraint firstItem="aDe-6J-Nw4" firstAttribute="leading" secondItem="LD1-v2-1uf" secondAttribute="trailing" constant="8" id="D8c-xT-TL6"/>
                             <constraint firstItem="pko-yt-70b" firstAttribute="centerY" secondItem="aDe-6J-Nw4" secondAttribute="centerY" id="EsE-FV-OWH"/>
                             <constraint firstItem="9Pq-p8-VwO" firstAttribute="leading" secondItem="H5k-6c-5aR" secondAttribute="leading" constant="16" id="FXs-ud-1LQ"/>
+                            <constraint firstItem="Y5h-Bt-A23" firstAttribute="leading" secondItem="H5k-6c-5aR" secondAttribute="leading" constant="16" id="Hq1-xc-F6p"/>
                             <constraint firstItem="ADQ-AK-jIY" firstAttribute="top" secondItem="Up5-3i-fpl" secondAttribute="bottom" constant="7" id="KEZ-jO-2gG"/>
                             <constraint firstItem="Up5-3i-fpl" firstAttribute="top" secondItem="9Pq-p8-VwO" secondAttribute="bottom" id="N3E-Rc-bCx"/>
                             <constraint firstItem="9Pq-p8-VwO" firstAttribute="top" secondItem="f2E-2y-YSZ" secondAttribute="bottom" id="RXI-vT-OZU"/>
@@ -217,6 +227,7 @@
                         <outlet property="fromInputTextField" destination="9Pq-p8-VwO" id="kpY-zf-eRF"/>
                         <outlet property="fromUnitButton" destination="LD1-v2-1uf" id="pEe-pm-F2I"/>
                         <outlet property="resultOutputLabel" destination="ADQ-AK-jIY" id="NIM-TU-Ltv"/>
+                        <outlet property="revertSignButton" destination="Y5h-Bt-A23" id="h3V-I1-Kpc"/>
                         <outlet property="switchButton" destination="aDe-6J-Nw4" id="Ctt-dd-0bD"/>
                         <outlet property="toUnitButton" destination="pko-yt-70b" id="KmE-ea-SoI"/>
                     </connections>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConvertViewController: UIViewController {
+class ConvertViewController: UIViewController, UITextFieldDelegate {
     var fromUnit: Unit?
     var toUnit: Unit?
     
@@ -21,17 +21,20 @@ class ConvertViewController: UIViewController {
     @IBOutlet weak var copyResultButton: UIButton!
     @IBOutlet weak var fromInputTextField: UITextField!
     @IBOutlet weak var resultOutputLabel: UILabel!
+    @IBOutlet weak var revertSignButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = NSStringFromClass(type(of: unitDimensionType!)).replacingOccurrences(of: "NSUnit", with: "")
         
+        revertSignButton.isHidden = true
         switch unitDimensionType {
         case is UnitLength:
             unitList = AppData.lengthUnitsList
             break
         case is UnitTemperature:
             unitList = AppData.temperatureUnitsList
+            revertSignButton.isHidden = false
             break
         case is UnitMass:
             unitList = AppData.massUnitsList
@@ -56,6 +59,10 @@ class ConvertViewController: UIViewController {
         
         fromUnitButton.setTitle(fromUnit?.symbol, for: .normal)
         toUnitButton.setTitle(toUnit?.symbol, for: .normal)
+        
+        fromInputTextField.delegate = self
+        
+        doConversion()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +86,26 @@ class ConvertViewController: UIViewController {
     @IBAction func inputFieldEditingChanged(_ sender: Any) {
         doConversion()
     }
-
+    
+    func textField(_ textField: UITextField,shouldChangeCharactersIn range: NSRange,replacementString string: String) -> Bool
+    {
+        let separatedString = fromInputTextField.text?.components(separatedBy: ".")
+        let countdots = (separatedString?.count)! - 1
+        if countdots > 0 && string.contains(".") {
+            return false
+        }
+        return true
+    }
+    
+    @IBAction func revertSignButtonAction(_ sender: Any) {
+        var value = Double(fromInputTextField.text!) ?? 0.0
+        if value > 0.0 || value < 0.0 {
+            value = 0.0 - value
+        }
+        fromInputTextField.text = "\(value)"
+        doConversion()
+    }
+    
     @IBAction func unwindToConvertView(sender: UIStoryboardSegue) {
         let vc = sender.source as! SelectUnitViewController
         let selectedUnit = vc.selectedUnit
