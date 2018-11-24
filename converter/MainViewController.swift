@@ -9,7 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController, UICollectionViewDataSource {
-    var menus = [Menu]()
+    var menus = [Dimension]()
 
     @IBOutlet weak var menuCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -36,9 +36,10 @@ class MainViewController: UIViewController, UICollectionViewDataSource {
         cell.layer.borderWidth = 2
         cell.layer.cornerRadius = 20
         
-        let menu = menus[indexPath.row]
-        cell.nameLabel.text = menu.name
-        cell.iconImageView.image = menu.icon
+        let unitType = menus[indexPath.row]
+        let typeString = NSStringFromClass(type(of: unitType)).replacingOccurrences(of: "NSUnit", with: "")
+        cell.nameLabel.text = typeString
+        cell.unitDimensionType = unitType
         return cell
     }
     
@@ -46,7 +47,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource {
         if segue.identifier == "ToConvertView" {
             let cell = sender as! MenuCollectionViewCell
             let vc = segue.destination as! ConvertViewController
-            vc.measureName = cell.nameLabel.text
+            vc.unitDimensionType = cell.unitDimensionType
         }
     }
 }

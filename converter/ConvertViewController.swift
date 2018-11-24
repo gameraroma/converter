@@ -12,7 +12,8 @@ class ConvertViewController: UIViewController {
     var fromUnit: Unit?
     var toUnit: Unit?
     
-    public var measureName: String?
+    public var unitDimensionType: Dimension?
+    public var unitList = [Dimension]()
     
     @IBOutlet weak var switchButton: UIButton!
     @IBOutlet weak var fromUnitButton: UIButton!
@@ -23,18 +24,22 @@ class ConvertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = measureName!
+        navigationItem.title = NSStringFromClass(type(of: unitDimensionType!)).replacingOccurrences(of: "NSUnit", with: "")
         
-        if measureName == "Length" {
-//            fromUnit = AppData.lengthUnitsList[0]
-//            toUnit = AppData.lengthUnitsList[1]
-            
-            fromUnit = UnitLength.meters
-            toUnit = UnitLength.centimeters
-            
-            fromUnitButton.setTitle(fromUnit?.symbol, for: .normal)
-            toUnitButton.setTitle(toUnit?.symbol, for: .normal)
+        switch unitDimensionType {
+        case is UnitLength:
+            unitList = AppData.lengthUnitsList
+            break
+        default:
+            unitList = AppData.lengthUnitsList
+            break
         }
+        
+        fromUnit = AppData.lengthUnitsList[0]
+        toUnit = AppData.lengthUnitsList[1]
+        
+        fromUnitButton.setTitle(fromUnit?.symbol, for: .normal)
+        toUnitButton.setTitle(toUnit?.symbol, for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,7 +97,7 @@ class ConvertViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         let vc = segue.destination as! SelectUnitViewController
-        vc.measureName = measureName!
+        vc.unitList = unitList
         switch segue.identifier {
         case "FromUnit":
             vc.barTitle = "From Unit"

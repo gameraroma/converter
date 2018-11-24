@@ -10,6 +10,7 @@ import UIKit
 
 class MenuCollectionViewCell: UICollectionViewCell {
     //MARK: Properties
+    public var unitDimensionType: Dimension?
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 }

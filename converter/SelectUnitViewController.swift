@@ -10,24 +10,19 @@ import UIKit
 
 class SelectUnitViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     public var barTitle: String?
-    public var measureName: String = ""
     public var selectedUnit: Unit?
+    
+    public var unitList = [Dimension]()
     
     @IBOutlet weak var unitsListTableView: UITableView!
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var navItem: UINavigationItem!
     
-    var unitList = [Unit]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navItem.title = barTitle
-        
-        if measureName == "Length" {
-            unitList = AppData.lengthUnitsList
-        }
         
         unitsListTableView.tableFooterView = UIView()
         
