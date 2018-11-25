@@ -9,14 +9,14 @@
 import UIKit
 
 class SelectUnitViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    // MARK: properties
     public var barTitle: String?
     public var selectedUnit: Unit?
     
     public var unitList = [Dimension]()
     
+    // MARK: outlet properties
     @IBOutlet weak var unitsListTableView: UITableView!
-    
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var navItem: UINavigationItem!
     
     override func viewDidLoad() {
@@ -30,10 +30,12 @@ class SelectUnitViewController: UIViewController, UITableViewDataSource, UITable
         unitsListTableView.delegate = self
     }
     
+    // MARK: actions
     @IBAction func cancelAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
+    // MARK: UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return unitList.count
     }
@@ -56,7 +58,7 @@ class SelectUnitViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
-    //TODO change editing style
+    // MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedUnit = unitList[indexPath.row]
         super.performSegue(withIdentifier: "unitSelected", sender: self)

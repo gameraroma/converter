@@ -9,12 +9,15 @@
 import UIKit
 
 class ConvertViewController: UIViewController, UITextFieldDelegate {
+    // MARK: private properties
     var fromUnit: Unit?
     var toUnit: Unit?
     
+    // Assign from previous page to indicate that which measurement is used in this page
     var unitDimensionType: Dimension?
     var unitList = [Dimension]()
     
+    // MARK: outlet properties
     @IBOutlet weak var switchButton: UIButton!
     @IBOutlet weak var fromUnitButton: UIButton!
     @IBOutlet weak var toUnitButton: UIButton!
@@ -66,9 +69,11 @@ class ConvertViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // for show keyboard immediately to be used for input text field
         fromInputTextField.becomeFirstResponder()
     }
     
+    // MARK: actions
     @IBAction func switchButtonAction(_ sender: Any) {
         switchUnitConversion()
         doConversion()
@@ -87,17 +92,8 @@ class ConvertViewController: UIViewController, UITextFieldDelegate {
         doConversion()
     }
     
-    func textField(_ textField: UITextField,shouldChangeCharactersIn range: NSRange,replacementString string: String) -> Bool
-    {
-        let separatedString = fromInputTextField.text?.components(separatedBy: ".")
-        let countdots = (separatedString?.count)! - 1
-        if countdots > 0 && string.contains(".") {
-            return false
-        }
-        return true
-    }
-    
     @IBAction func revertSignButtonAction(_ sender: Any) {
+        // Double can detect text is number format or not, if not Double will return nil and `value` will be 0.0 as default value
         var value = Double(fromInputTextField.text!) ?? 0.0
         if value > 0.0 || value < 0.0 {
             value = 0.0 - value
@@ -106,6 +102,7 @@ class ConvertViewController: UIViewController, UITextFieldDelegate {
         doConversion()
     }
     
+    // callback when navigate back from Select Unit View Controller
     @IBAction func unwindToConvertView(sender: UIStoryboardSegue) {
         let vc = sender.source as! SelectUnitViewController
         let selectedUnit = vc.selectedUnit
@@ -133,7 +130,19 @@ class ConvertViewController: UIViewController, UITextFieldDelegate {
         }
         doConversion()
     }
+    
+    //MARK: UITextFieldDelegate
+    func textField(_ textField: UITextField,shouldChangeCharactersIn range: NSRange,replacementString string: String) -> Bool
+    {
+        let separatedString = fromInputTextField.text?.components(separatedBy: ".")
+        let countdots = (separatedString?.count)! - 1
+        if countdots > 0 && string.contains(".") {
+            return false
+        }
+        return true
+    }
 
+    //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         let vc = segue.destination as! SelectUnitViewController
@@ -161,11 +170,11 @@ class ConvertViewController: UIViewController, UITextFieldDelegate {
         UIView.animate(withDuration: 0.25, animations: {
             self.switchButton.transform = self.switchButton.transform.rotated(by: CGFloat.pi)
             
-            self.fromUnitButton.setTitle(self.fromUnit?.symbol, for: .normal)
-            self.toUnitButton.setTitle(self.toUnit?.symbol, for: .normal)
-            
             self.resultOutputLabel.alpha = 1.0
         })
+        
+        self.fromUnitButton.setTitle(self.fromUnit?.symbol, for: .normal)
+        self.toUnitButton.setTitle(self.toUnit?.symbol, for: .normal)
     }
     
     private func doConversion() {

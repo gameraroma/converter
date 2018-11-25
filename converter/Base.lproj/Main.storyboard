@@ -291,7 +291,6 @@
                         <viewLayoutGuide key="safeArea" id="pjR-zM-kWU"/>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="U5Q-eq-zwV" id="HLq-3D-4lU"/>
                         <outlet property="navItem" destination="od4-4g-kn0" id="wPw-w1-sq9"/>
                         <outlet property="unitsListTableView" destination="dLh-1j-vZi" id="Ain-hD-L0G"/>
                     </connections>

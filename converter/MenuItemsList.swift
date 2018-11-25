@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 
 class AppData {
+    // Measurement List
     public static var menuItemsList : [Dimension] {
         get {
                 return [UnitLength.init(symbol: ""), UnitTemperature.init(symbol: ""), UnitMass.init(symbol: ""), UnitArea.init(symbol: ""), UnitVolume.init(symbol: ""), UnitAngle.init(symbol: "")]
         }
     }
     
+    // Unit List
     public static var lengthUnitsList : [UnitLength] {
         get {
             return [UnitLength.meters, UnitLength.kilometers, UnitLength.centimeters, UnitLength.feet, UnitLength.inches, UnitLength.yards, UnitLength.miles]
